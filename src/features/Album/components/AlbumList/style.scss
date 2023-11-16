@@ -1,0 +1,11 @@
+.alnum-list{
+    display: flex;
+    list-style: none;
+    li{
+        width: 25%;
+        padding: 10px;
+        img{
+            width: 100%;
+        }
+    }
+}
