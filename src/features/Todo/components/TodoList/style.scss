@@ -1,0 +1,22 @@
+.list-task{
+    list-style: none;
+    li{
+        cursor: pointer;
+        &.complete{
+            text-decoration: line-through;
+            color: #ccc;
+            font-style: italic;
+        }
+    }
+}
+.list-btn{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    li{
+        margin: 0 5px;
+        button{
+            cursor: pointer;
+        }
+    }
+}
