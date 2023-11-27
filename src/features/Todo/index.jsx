@@ -1,17 +1,21 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import ListPage from "./pages/ListPage";
+import NotFound from "../../components/NotFound";
 import DetailPage from "./pages/DetailPage";
+import ListPage from "./pages/ListPage";
 
 TodoFeature.propTypes = {};
 
 function TodoFeature(props) {
   return (
-    <Routes>
-      <Route path="/" Component={ListPage} />
-      <Route path="/todoId/:id" Component={DetailPage} />
-    </Routes>
+    <div>
+      <Routes>
+        <Route path="/" Component={ListPage} />
+        <Route path="/:todoId" Component={DetailPage} />
+        <Route Component={NotFound} />
+      </Routes>
+    </div>
   );
 }
 

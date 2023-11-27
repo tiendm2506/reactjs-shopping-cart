@@ -1,9 +1,12 @@
+/* eslint-disable no-restricted-globals */
 import React, { useState } from "react";
+import queryString from "query-string";
+
 import TodoList from "./../../components/TodoList";
 
-TodoFeature.propTypes = {};
+ListPage.propTypes = {};
 
-function TodoFeature(props) {
+function ListPage(props) {
   const initTodoList = [
     { id: 1, title: "Eat", status: "new" },
     { id: 2, title: "Sleep", status: "completed" },
@@ -18,7 +21,10 @@ function TodoFeature(props) {
     };
     settodoList(newTodoList);
   };
-  const [filterStataus, setFilterStataus] = useState("all");
+  const [filterStataus, setFilterStataus] = useState(() => {
+    const params = queryString.parse(location.search);
+    return params.status || "all";
+  });
   const handleShowFilter = (status) => {
     setFilterStataus(status);
   };
@@ -46,4 +52,4 @@ function TodoFeature(props) {
   );
 }
 
-export default TodoFeature;
+export default ListPage;
