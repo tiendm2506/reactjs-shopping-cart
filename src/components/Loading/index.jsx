@@ -1,17 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import './style.scss';
+import './style.scss'
 
-Loading.propTypes = {
-    
-};
+Loading.propTypes = {}
 
 function Loading(props) {
     return (
         <div>
             <h1>Loading</h1>
         </div>
-    );
+    )
 }
 
-export default Loading;
+export default Loading

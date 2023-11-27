@@ -1,7 +1,7 @@
-import React from 'react';
-import AlbumList from './components/AlbumList';
+import React from 'react'
+import AlbumList from './components/AlbumList'
 
-const AlbumFeature = props => {
+const AlbumFeature = (props) => {
     const albumList = [
         { id: 1, name: 'Gác Lại Âu Lo', thumbnail: 'https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/8/3/e/8/83e83c4a068f0b994a99735e440b76df.jpg' },
         { id: 2, name: 'Nhạc quẩy quốc dân, lâng lâng', thumbnail: 'https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/8/f/3/1/8f31a4ab282b3293da2604ba7374c25c.jpg' },
@@ -12,11 +12,9 @@ const AlbumFeature = props => {
         <div>
             <AlbumList albumList={albumList} />
         </div>
-    );
-};
+    )
+}
 
-AlbumFeature.propTypes = {
-    
-};
+AlbumFeature.propTypes = {}
 
-export default AlbumFeature;
+export default AlbumFeature

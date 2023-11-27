@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import './style.scss'
 
 AlbumItem.propTypes = {
-    album: PropTypes.object
-};
+    album: PropTypes.object,
+}
 
-function AlbumItem({album}) {
+function AlbumItem({ album }) {
     return (
         <div>
             <h3>{album.name}</h3>
-            <img src={album.thumbnail} alt="" />
+            <img src={album.thumbnail} alt='' />
         </div>
-    );
+    )
 }
 
-export default AlbumItem;
+export default AlbumItem
