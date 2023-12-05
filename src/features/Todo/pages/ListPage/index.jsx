@@ -4,7 +4,8 @@ import { useNavigate, useMatches, useLocation } from 'react-router-dom'
 import queryString from 'query-string'
 import TodoForm from '../../components/TodoForm'
 
-import TodoList from './../../components/TodoList'
+// import TodoList from './../../components/TodoList'
+import TodoList from 'features/Todo/components/TodoList'
 
 ListPage.propTypes = {}
 
