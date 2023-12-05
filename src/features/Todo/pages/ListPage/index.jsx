@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useMatches, useLocation } from 'react-router-dom'
 import queryString from 'query-string'
+import TodoForm from '../../components/TodoForm'
 
 import TodoList from './../../components/TodoList'
 
@@ -42,8 +43,21 @@ function ListPage(props) {
         const status = params.status
         setFilterStataus(status || 'all')
     }, [location.search])
+
+    const handleTodoFormSubmit = (values) => {
+        const newTodo = {
+            id: todoList.length + 1,
+            title: values.title,
+            status: 'new',
+        }
+        const newTodoList = [...todoList, newTodo]
+        settodoList(newTodoList)
+    }
+
     return (
         <div>
+            <h1>Todo Form</h1>
+            <TodoForm onSubmit={handleTodoFormSubmit} />
             <h3>Todo list</h3>
             <TodoList todoList={todoListFilter} onClickTodo={handleClickTodoItem} />
             <ul className='list-btn'>
