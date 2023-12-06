@@ -8,12 +8,13 @@ import NotFound from './components/NotFound'
 
 import productApi from './api/productApi'
 import { useEffect } from 'react'
+import Header from 'components/Header'
 
 function App() {
     useEffect(() => {
         const getProducts = async () => {
             const params = {
-                _limit: 10
+                _limit: 10,
             }
             const productList = await productApi.getAll(params)
         }
@@ -21,7 +22,7 @@ function App() {
     }, [])
     return (
         <div className='App'>
-            Header
+            <Header />
             <p>
                 <NavLink to='/todos'>Todos</NavLink>
             </p>

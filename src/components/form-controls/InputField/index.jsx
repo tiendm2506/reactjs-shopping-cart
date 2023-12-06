@@ -26,6 +26,7 @@ function InputField(props) {
                     onChange={onChange}
                     label={label}
                     fullWidth
+                    margin='normal'
                     error={!!hasError}
                     helperText={formState.errors[name]?.message}
                 />
