@@ -67,7 +67,6 @@ export default function Header() {
                 aria-labelledby='alert-dialog-title'
                 aria-describedby='alert-dialog-description'
             >
-                <DialogTitle id='alert-dialog-title'>{"Use Google's location service?"}</DialogTitle>
                 <DialogContent>
                     <Register />
                 </DialogContent>
