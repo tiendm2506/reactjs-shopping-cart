@@ -61,9 +61,7 @@ function RegisterForm(props) {
     })
 
     const handleSubmit = (values) => {
-        console.log('Values: ', values)
         onSubmit(values)
-        console.log('Form: ', form)
         form.reset()
     }
 
