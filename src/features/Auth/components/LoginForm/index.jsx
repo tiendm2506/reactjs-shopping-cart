@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { LinearProgress } from '@mui/material'
 
-RegisterForm.propTypes = {
+LoginForm.propTypes = {
     onSubmit: PropTypes.func,
 }
 
@@ -28,34 +28,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-function RegisterForm(props) {
+function LoginForm(props) {
     const classes = useStyles()
     const schema = yup
         .object({
-            fullName: yup
-                .string()
-                .required('Please enter your full name')
-                .min(5, 'Please enter at lease 5 characters')
-                .test('should have at lease 2 words', 'Please enter at lease 2 words', (value) => {
-                    console.log(value)
-                    return value.split(' ').length >= 2
-                }),
-            email: yup.string().required('Please enter your email').email('Your email is invalid'),
-            password: yup.string().required('Please enter your password').min(6, 'Please enter at lease 5 characters'),
-            confirmPassword: yup
-                .string()
-                .required('Please retype password')
-                .min(6, 'Please enter at lease 5 characters')
-                .oneOf([yup.ref('password')], 'Password does not match'),
+            identifier: yup.string().required('Please enter your email').email('Your email is invalid'),
+            password: yup.string().required('Please enter your password'),
         })
         .required()
 
     const form = useForm({
         defaultValues: {
-            fullName: '',
-            email: '',
+            identifier: '',
             password: '',
-            confirmPassword: '',
         },
         resolver: yupResolver(schema),
     })
@@ -76,19 +61,17 @@ function RegisterForm(props) {
                 <LockOutlinedIcon />
             </Avatar>
             <Typography component='h1' variant='h5' className={classes.title}>
-                Sign Up
+                Login
             </Typography>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
-                <InputField name='fullName' label='Full name' form={form} />
-                <InputField name='email' label='Email' form={form} />
+                <InputField name='identifier' label='Email' form={form} />
                 <PasswordField name='password' label='Password' form={form} />
-                <PasswordField name='confirmPassword' label='Confirm password' form={form} />
                 <Button type='submit' disabled={isSubmitting} variant='contained' fullWidth className={classes.submit}>
-                    Create an account
+                    Login
                 </Button>
             </form>
         </div>
     )
 }
 
-export default RegisterForm
+export default LoginForm

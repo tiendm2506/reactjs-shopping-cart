@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import PropTypes from 'prop-types'
 import { increase, decrease } from './counterSlice'
 
 import { makeStyles } from '@mui/styles'

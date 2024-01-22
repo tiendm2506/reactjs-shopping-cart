@@ -1,38 +1,37 @@
 import { unwrapResult } from '@reduxjs/toolkit'
-import { register } from 'features/Auth/userSlice'
+import { login } from 'features/Auth/userSlice'
 import { useDispatch } from 'react-redux'
-import RegisterForm from '../RegisterForm'
 import { enqueueSnackbar } from 'notistack'
 import PropsTypes from 'prop-types'
+import LoginForm from '../LoginForm'
 
-Register.propTypes = {
+Login.propTypes = {
     closeDialog: PropsTypes.func,
 }
-function Register(props) {
+function Login(props) {
     const dispatch = useDispatch()
     const { closeDialog } = props
     const handleSubmit = async (values) => {
         try {
             // auto set username = email
             values.username = values.email
-            const action = register(values)
+            const action = login(values)
             const resultAction = await dispatch(action)
             const user = unwrapResult(resultAction)
             console.log('user: ', user)
             if (closeDialog) {
                 closeDialog()
             }
-            enqueueSnackbar('Register Successfully !!!', { variant: 'success' })
         } catch (error) {
-            console.log('Fail to register: ', error)
+            console.log('Fail to login: ', error)
             enqueueSnackbar(error.message, { variant: 'error' })
         }
     }
     return (
         <div>
-            <RegisterForm onSubmit={handleSubmit} />
+            <LoginForm onSubmit={handleSubmit} />
         </div>
     )
 }
 
-export default Register
+export default Login
