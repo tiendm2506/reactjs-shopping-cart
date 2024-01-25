@@ -21,7 +21,7 @@ function ProductSkeletonList({ length }) {
                     <Grid item key={index} xs={12} sm={6} lg={4} xl={3}>
                         <Box padding={1}>
                             <Stack>
-                                <Skeleton variant='rectangular' width='100%' height={120} />
+                                <Skeleton variant='rectangular' width='100%' height={200} />
                                 <Skeleton variant='text' sx={{ fontSize: '1rem' }} />
                                 <Skeleton variant='text' width='60%' sx={{ fontSize: '1rem' }} />
                             </Stack>
