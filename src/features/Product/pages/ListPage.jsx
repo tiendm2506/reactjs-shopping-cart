@@ -7,6 +7,7 @@ import ProductSkeletonList from '../components/ProductSkeletonList'
 import ProductList from '../components/ProductList'
 import Pagination from '@mui/material/Pagination'
 import ProductSort from '../components/ProductSort'
+import ProductFilter from '../components/ProductFilter'
 
 ListPage.propTypes = {}
 
@@ -40,7 +41,6 @@ function ListPage(props) {
                 const { data, pagination } = response
                 setProductList(data)
                 setPagination(pagination)
-                console.log({ response })
             })()
         } catch (error) {
             console.log('Error: ', error)
@@ -62,12 +62,21 @@ function ListPage(props) {
         }))
     }
 
+    const handleFilterChange = (newFilter) => {
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            ...newFilter,
+        }))
+    }
+
     return (
         <Box pt={4}>
             <Container>
                 <Grid container spacing={1}>
                     <Grid item className={classes.left}>
-                        <Paper elevation={0}>Left content</Paper>
+                        <Paper elevation={0}>
+                            <ProductFilter filters={filters} onChange={handleFilterChange} />
+                        </Paper>
                     </Grid>
                     <Grid item className={classes.right}>
                         <Paper elevation={0}>
