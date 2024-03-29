@@ -18,11 +18,14 @@ function ProductFilter({ filters, onChange }) {
         }
         onChange(newFilters)
     }
+    const filterPriceChange = (values) => {
+        if(onChange) onChange(values)
+    }
     return (
         <div>
             <Box>
                 <FilterByCategory onChange={filterCategoryChange} />
-                {/* <FilterByPrice /> */}
+                <FilterByPrice onChange={filterPriceChange} />
             </Box>
         </div>
     )

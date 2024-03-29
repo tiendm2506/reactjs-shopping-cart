@@ -1,14 +1,42 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Typography, Box } from '@mui/material'
+import { Typography, Box, createTheme } from '@mui/material'
+import { makeStyles } from '@mui/styles'
+// import { createTheme } from '@mui/material/styles'
 import categoryApi from 'api/categoryApi'
+import CategorySkeletonList from './CategorySkeletonList'
 
 FilterByCategory.propTypes = {
     onChange: PropTypes.func,
 }
+const theme = createTheme()
+const useStyles = makeStyles(() => ({
+    root: {
+        padding: theme.spacing(2),
+    },
+    title: {
+        textTransform: 'uppercase',
+        textAlign: 'left',
+    },
+    menu: {
+        padding: 0,
+        margin: 0,
+        listStyleType: 'none',
+        '& > li': {
+            marginTop: theme.spacing(1),
+            textAlign: 'left',
+            '&:hover': {
+                cursor: 'pointer',
+                color: theme.palette.info.main,
+            },
+        },
+    },
+}))
 
 function FilterByCategory({ onChange }) {
     const [listCategory, setListCategory] = useState([])
+    const [loading, setLoading] = useState(true)
+    const classes = useStyles()
     useEffect(() => {
         ;(async () => {
             try {
@@ -25,27 +53,28 @@ function FilterByCategory({ onChange }) {
                 console.log('Failed to fetch category list: ', error)
             }
         })()
+        setLoading(false)
     }, [])
     const handleClickCategory = (category) => {
         if (onChange) onChange(category.id)
     }
     return (
-        <div>
-            <Typography variant='h5' color='initial'>
+        <Box className={classes.root}>
+            <Typography variant='subtitle2' className={classes.title}>
                 Danh mục sản phẩm
-                <ul>
+            </Typography>
+            {loading ? (
+                <CategorySkeletonList />
+            ) : (
+                <ul className={classes.menu}>
                     {listCategory.map((cate) => (
-                        <li
-                            key={cate.id}
-                            style={{ cursor: 'pointer', listStyle: 'none', textAlign: 'left', fontSize: '16px' }}
-                            onClick={() => handleClickCategory(cate)}
-                        >
-                            {cate.name}
+                        <li key={cate.id} onClick={() => handleClickCategory(cate)}>
+                            <Typography variant='body2'>{cate.name}</Typography>
                         </li>
                     ))}
                 </ul>
-            </Typography>
-        </div>
+            )}
+        </Box>
     )
 }
 
