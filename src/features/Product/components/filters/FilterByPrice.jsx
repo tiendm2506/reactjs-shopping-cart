@@ -1,12 +1,34 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Typography, Box, TextField, Button } from '@mui/material'
+import { Typography, Box, TextField, Button, createTheme } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 FilterByPrice.propTypes = {
     onchange: PropTypes.func,
 }
 
+const theme = createTheme()
+const useStyles = makeStyles(() => ({
+    root: {
+        padding: theme.spacing(2),
+        borderTop: `1px solid ${theme.palette.grey[300]}`,
+        textAlign: 'left',
+    },
+    range: {
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        alignItems: 'center',
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+        '& > span': {
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+        },
+    },
+}))
+
 function FilterByPrice({ onChange }) {
+    const classes = useStyles()
     const [values, setValues] = useState({
         salePrice_gte: 0,
         salePrice_lte: 0,
@@ -23,9 +45,9 @@ function FilterByPrice({ onChange }) {
         }))
     }
     return (
-        <Box>
-            <Typography variant='subtitle2'>Giá</Typography>
-            <Box>
+        <Box className={classes.root}>
+            <Typography variant='subtitle2'>Chọn khoảng giá</Typography>
+            <Box className={classes.range}>
                 <TextField
                     variant='standard'
                     name='salePrice_gte'
@@ -40,7 +62,7 @@ function FilterByPrice({ onChange }) {
                     onChange={handleChange}
                 />
             </Box>
-            <Button variant='outlined' color='primary' onClick={handleSubmit}>
+            <Button variant='outlined' color='primary' size='small' onClick={handleSubmit}>
                 Áp dụng
             </Button>
         </Box>
