@@ -18,15 +18,13 @@ const useStyles = makeStyles(() => ({
         borderTop: `1px solid ${theme.palette.grey[300]}`,
         textAlign: 'left',
     },
-    range: {
-        display: 'flex',
-        flexFlow: 'row nowrap',
-        alignItems: 'center',
-        marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(1),
-        '& > span': {
-            marginLeft: theme.spacing(1),
-            marginRight: theme.spacing(1),
+    list: {
+        padding: 0,
+        margin: 0,
+        listStyleType: 'none',
+        '& > li': {
+            margin: 0,
+            marginTop: theme.spacing(1),
         },
     },
 }))
@@ -41,7 +39,7 @@ function FilterByService({ filters = {}, onChange }) {
     return (
         <Box className={classes.root}>
             <Typography variant='subtitle2'>Chọn dịch vụ</Typography>
-            <ul>
+            <ul className={classes.list}>
                 {listServices.map((service, index) => (
                     <li key={index}>
                         <FormControlLabel

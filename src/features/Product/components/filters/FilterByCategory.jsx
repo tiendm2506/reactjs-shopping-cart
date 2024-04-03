@@ -15,7 +15,6 @@ const useStyles = makeStyles(() => ({
         padding: theme.spacing(2),
     },
     title: {
-        textTransform: 'uppercase',
         textAlign: 'left',
     },
     menu: {
