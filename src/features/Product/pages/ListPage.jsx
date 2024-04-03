@@ -84,7 +84,7 @@ function ListPage(props) {
                             {loading ? <ProductSkeletonList /> : <ProductList data={productList} />}
                             <Box className={classes.pagination}>
                                 <Pagination
-                                    count={Math.ceil(pagination.total / pagination.limit)}
+                                    count={Math.ceil(pagination.total / pagination.limit) || 1}
                                     color='primary'
                                     page={pagination.page}
                                     onChange={handleChangePage}
